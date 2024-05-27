@@ -1,7 +1,6 @@
 package org.esercise;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -18,29 +17,52 @@ public class Main {
 
             switch (choice){
                 case"1":
-                    System.out.print("Titolo evento: ");
-                    String title = scanner.nextLine();
+                    System.out.print("E per caso un concerto? 1-si  quaisiasi tasto-no ");
+                    String tipeOfEvent = scanner.nextLine();
+                    if (tipeOfEvent.equals("1")){
+                        System.out.print("Titolo evento: ");
+                        String title = scanner.nextLine();
 
-                    System.out.print("Data evento (yyyy-MM-dd): ");
-                    LocalDate date = LocalDate.parse(scanner.nextLine());
+                        System.out.print("Data evento (yyyy-MM-dd): ");
+                        LocalDate date = LocalDate.parse(scanner.nextLine());
 
-                    System.out.print("Capacita location : ");
-                    int capacity = Integer.parseInt(scanner.nextLine());
-                    try {
-                        Evento evento = new Evento(title, date, capacity);
-                        eventi.add(evento);
+                        System.out.print("Capacita location : ");
+                        int capacity = Integer.parseInt(scanner.nextLine());
 
-                        System.out.print("Vuoi inserire delle prenotazioni?:  1-si qualsiasi altro carattere-no");
-                        String choice2 = scanner.nextLine();
-                        if(choice2.equals("1")){
-                            getprenotation(evento,scanner);
-                        }
-                        informationEvent(evento);
-                    } catch (IllegalArgumentException e) {
-                        System.out.print("Impossibile creare l'evento: ");
-                        System.out.println(e.getMessage());
+                        System.out.print("Prezzo: ");
+                        String price = scanner.nextLine();
+
+                        System.out.print("orario : ");
+                        String time = scanner.nextLine();
+                        Concert concerto = new Concert(title, date, capacity,time,price);
+                        System.out.println(concerto.toString());;
+
                     }
+                    else {
 
+                        System.out.print("Titolo evento: ");
+                        String title = scanner.nextLine();
+
+                        System.out.print("Data evento (yyyy-MM-dd): ");
+                        LocalDate date = LocalDate.parse(scanner.nextLine());
+
+                        System.out.print("Capacita location : ");
+                        int capacity = Integer.parseInt(scanner.nextLine());
+                        try {
+                            Evento evento = new Evento(title, date, capacity);
+                            eventi.add(evento);
+
+                            System.out.print("Vuoi inserire delle prenotazioni?:  1-si qualsiasi altro carattere-no");
+                            String choice2 = scanner.nextLine();
+                            if(choice2.equals("1")){
+                                getprenotation(evento,scanner);
+                            }
+                            informationEvent(evento);
+                        } catch (IllegalArgumentException e) {
+                            System.out.print("Impossibile creare l'evento: ");
+                            System.out.println(e.getMessage());
+                        }
+                    }
                     break;
                 case"2":
                     System.out.print("A quale evento vuoi aggiungere prenotazioni: ");
