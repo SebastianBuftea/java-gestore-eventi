@@ -83,7 +83,7 @@ public class Evento {
            System.out.println("Posti aggiunti con successo");
        }
        else {
-           System.out.println("ci sono solo: "+(capacity-reservedSeats)+" posti disponibili");
+           System.out.println("ci sono solo: "+seatCalculator()+" posti disponibili");
        }
     }
 
@@ -97,6 +97,13 @@ public class Evento {
             System.out.println("Posti disdetti con successo");
         }
     }
+
+    //METODO CHE CALCOLA I POSTI DISPONIBILI
+    public int seatCalculator(){
+        int totalseat= capacity-reservedSeats;
+    return totalseat;
+
+    };
 
     @Override
     public String toString() {
